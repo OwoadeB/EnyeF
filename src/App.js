@@ -64,7 +64,7 @@ function App() {
     const slice = data.slice(offset, offset + perPage)
     setsliceVal(slice) 
     setpageCount(Math.ceil(data.length / perPage))
-  },[searchField,dropdownDisplay])
+  },[searchField,dropdownDisplay,dropdownDisplay2])
 
   useEffect(() => {
     const data = dropdownVals();
