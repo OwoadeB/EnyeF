@@ -64,7 +64,8 @@ function App() {
     const slice = data.slice(offset, offset + perPage)
     setsliceVal(slice) 
     setpageCount(Math.ceil(data.length / perPage))
-  },[searchField,dropdownDisplay,dropdownDisplay2])
+    console.log(dropdownDisplayItem2)
+  },[searchField,dropdownDisplay,dropdownDisplay2,dropdownDisplayItem,dropdownDisplayItem2])
 
   useEffect(() => {
     const data = dropdownVals();
@@ -120,7 +121,7 @@ function App() {
             
             <CardList records={sliceVal}/>
           <div style={{display:'flex',justifyContent:'center'}}>
-              <Pagination count={pageCount} onChange={handlePageClick} defaultPage={1}	size="large"/>
+              <Pagination count={pageCount - 1} onChange={handlePageClick} defaultPage={1}	size="large"/>
             </div>
 
     </div>
