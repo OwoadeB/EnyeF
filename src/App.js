@@ -10,6 +10,7 @@ const  App = () => {
   const [apiResponse, setapiResponse] = useState([]);
   const [searchField, setsearchField] = useState("");
   const [offset, setoffset] = useState(0);
+  const [loading, setLoading] = useState(true);
   const perPage = 20
   const [currentPage, setcurrentPage] = useState(0)
   const [sliceVal, setsliceVal] = useState([])
@@ -22,7 +23,10 @@ const  App = () => {
   useEffect(() => {
     fetch('https://api.enye.tech/v1/challenge/records')
       .then(response=> response.json())
-      .then(users => {setapiResponse(users.records.profiles)});
+      .then(users => {
+        setapiResponse(users.records.profiles)
+        setLoading(false);
+      });
   }, [])
 
   const filteredRecords = apiResponse.filter(records =>{
@@ -91,39 +95,41 @@ const  App = () => {
   
   return (
     <div style={{width:"100%",maxWidth:"100%"}}>
-          <HeaderComponent 
-            inputChange={(searchField)=> setsearchField(searchField)}/>
-            <Row style={{display:'flex',justifyContent:'flex-end',padding:"30px"}}>
-                <Dropdown style={{paddingRight:"35px",height:"15px",backgroundColor:'transparent'}}>
-                  <Dropdown.Toggle variant="secondary" id="dropdown-basic" size="sm">
-                    {dropdownDisplay}
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item onClick={e => dropdownItemClick("Male")}>Male</Dropdown.Item>
-                    <Dropdown.Item onClick={e => dropdownItemClick("Female")}>Female</Dropdown.Item>
-                    <Dropdown.Item onClick={e => dropdownItemClick("Prefer to skip")}>Prefer to skip</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-                <Dropdown style={{paddingRight:"35px",height:"15px"}}>
-                  <Dropdown.Toggle variant="secondary" id="dropdown-basic" size="sm">
-                    {dropdownDisplay2}
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item onClick={e => dropdownItemClick2("cc")}>Credit Card</Dropdown.Item>
-                    <Dropdown.Item onClick={e => dropdownItemClick2("Paypal")}>Paypal</Dropdown.Item>
-                    <Dropdown.Item onClick={e => dropdownItemClick2("check")}>Check</Dropdown.Item>
-                    <Dropdown.Item onClick={e => dropdownItemClick2("money order")}>Money Order</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              
-              
-            </Row>
-            
-            <CardList records={sliceVal}/>
-          <div style={{display:'flex',justifyContent:'center'}}>
-              <Pagination count={pageCount - 1} onChange={handlePageClick} defaultPage={1}	size="large"/>
-            </div>
-
+          {
+            loading ? <h2>Loading please wait ..... </h2>: 
+            (
+              <>
+                <HeaderComponent inputChange={(searchField) => setsearchField(searchField)} />
+                <Row style={{ display: 'flex', justifyContent: 'flex-end', padding: "30px" }}>
+                  <Dropdown style={{ paddingRight: "35px", height: "15px", backgroundColor: 'transparent' }}>
+                    <Dropdown.Toggle variant="secondary" id="dropdown-basic" size="sm">
+                      {dropdownDisplay}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item onClick={e => dropdownItemClick("Male")}>Male</Dropdown.Item>
+                      <Dropdown.Item onClick={e => dropdownItemClick("Female")}>Female</Dropdown.Item>
+                      <Dropdown.Item onClick={e => dropdownItemClick("Prefer to skip")}>Prefer to skip</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                  <Dropdown style={{ paddingRight: "35px", height: "15px" }}>
+                    <Dropdown.Toggle variant="secondary" id="dropdown-basic" size="sm">
+                      {dropdownDisplay2}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item onClick={e => dropdownItemClick2("cc")}>Credit Card</Dropdown.Item>
+                      <Dropdown.Item onClick={e => dropdownItemClick2("Paypal")}>Paypal</Dropdown.Item>
+                      <Dropdown.Item onClick={e => dropdownItemClick2("check")}>Check</Dropdown.Item>
+                      <Dropdown.Item onClick={e => dropdownItemClick2("money order")}>Money Order</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Row>
+                <CardList records={sliceVal} />
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <Pagination count={pageCount - 1} onChange={handlePageClick} defaultPage={1} size="large" />
+                </div>
+              </>
+            )
+          }
     </div>
   );
 }
