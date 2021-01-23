@@ -42,18 +42,29 @@ const useStyles = makeStyles((theme) => ({
                             onMouseLeave={handlePopoverClose}
                             >
                                 <div className= 'tc dib br3 ba b--light-gray pa3 ma2 bw2 pointer w8' style={{width:"300px"}}>                    
-                                    <img alt='robots' src= {`https://robohash.org/${username}`} style={{width:"220px",height:"220px"}}/>
                                     <div>
-                                        <p style={{paddingTop:'30px', fontFamily: 'Muli', fontSize: '15px', fontWeight:'bold',
+                                        <p style={{paddingTop:'15px', fontFamily: 'Muli', fontSize: '15px', fontWeight:'bold',
                                         textAlignLast:'center', lineHeight: '12px', letterSpacing: '0.2px',color: 'black',}}>
-                                            {username}
+                                            userName : {username}
+                                        </p>
+                                        <p style={{paddingTop:'15px', fontFamily: 'Muli', fontSize: '15px', fontWeight:'bold',
+                                        textAlignLast:'center', lineHeight: '12px', letterSpacing: '0.2px',color: 'black',}}>
+                                            Phone : {phonenumber}
+                                        </p>
+                                        <p style={{paddingTop:'15px', fontFamily: 'Muli', fontSize: '15px', fontWeight:'bold',
+                                        textAlignLast:'center', lineHeight: '12px', letterSpacing: '0.2px',color: 'black',}}>
+                                            Email : {email}
+                                        </p>
+                                        <p style={{paddingTop:'15px', fontFamily: 'Muli', fontSize: '15px', fontWeight:'bold',
+                                        textAlignLast:'center', lineHeight: '12px', letterSpacing: '0.2px',color: 'black',}}>
+                                            Gender : {gender}
                                         </p>
                                     </div>
                                     <div style={{paddingTop: '20px', borderTop: '0.5vh solid ', padding:0 , left:0, marginTop: '10px', opacity: 0.06}}></div>
                                     <div>
-                                        <p style={{paddingTop:'30px', fontFamily: 'Muli', fontSize: '20px', fontWeight:'bold',
+                                        <p style={{paddingTop:'20px', fontFamily: 'Muli', fontSize: '18px', fontWeight:'bold',
                                           textAlignLast:'center', lineHeight: '12px', letterSpacing: '0.2px',color: 'black',}}>
-                                            {firstname} {lastname}
+                                            Name: {firstname} {lastname}
                                         </p>
                                     </div>
                                 </div>

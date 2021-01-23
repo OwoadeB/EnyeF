@@ -1,6 +1,5 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
-import logo_img from './logo.jpg';
 import Col from 'react-bootstrap/Col'
 
  function HeaderComponent (props) {
@@ -10,17 +9,15 @@ import Col from 'react-bootstrap/Col'
       }
     return (
             
-            <Row className="shadow" style={{position:"static"}}> 
-              
-                <img style={{marginLeft:"20px",padding:"5px",width:"50px",height:"50px"}} src={logo_img} alt="#"/>
+            <Row className="shadow" style={{position:"static"}}>               
                 <Col>
-                    <p style={{fontFamily:"Muli",fontSize:"25px",fontWeight:"bold",paddingTop:"5px"}}>Enyo Frontend</p>
+                    <p style={{fontFamily:"Muli",fontSize:"25px",fontWeight:"bold",padding:"5px"}}>Enye Frontend</p>
                 </Col>  
                 <Col xs={12} md={8}>
                     <form >
                     <input
-                        style={{outline:"none",backgroundColor:"none",borderWidth:"0 0 2px",borderColor:"#61aaf2",marginTop:"15px"}}
-                        className="w-50" type="text" placeholder="Name" aria-label="Search" 
+                        style={{outline:"none",backgroundColor:"none",borderWidth:"0 0 2px",borderColor:"#000",marginTop:"15px"}}
+                        className="w-50" type="text" placeholder="Search Name" aria-label="Search" 
                         onChange={e => searchInputChange(e.target.value)}
                         />                            
                     </form> 

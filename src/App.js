@@ -6,7 +6,7 @@ import CardList from './Components/CardList';
 import Pagination from '@material-ui/lab/Pagination';
 import Dropdown from 'react-bootstrap/Dropdown'
 
-function App() {
+const  App = () => {
   const [apiResponse, setapiResponse] = useState([]);
   const [searchField, setsearchField] = useState("");
   const [offset, setoffset] = useState(0);
